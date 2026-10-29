@@ -1,35 +1,74 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><title>Privacy Policy | JiraSync for Sheets | Runneth Labs</title><meta name="description" content="Privacy policy for JiraSync for Sheets, a Google Workspace add-on by Runneth Labs."></head><body><header class="nav"><div class="wrap"><a class="brand" href="index.html"><img src="favicon.svg" alt="">Runneth Labs</a><nav><a href="index.html#products">Products</a><a href="privacy.html">Privacy</a><a class="cta" href="terms.html">Terms</a></nav></div></header>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><title>Privacy Policy | JiraSync for Sheets | Runneth Labs</title><meta name="description" content="Privacy policy for JiraSync for Sheets, a Google Sheets add-on by Runneth Labs: what data it uses, the Google permissions it requests, and the Google API Limited Use disclosure."></head><body><header class="nav"><div class="wrap"><a class="brand" href="index.html"><img src="favicon.svg" alt="">Runneth Labs</a><nav><a href="index.html#products">Products</a><a href="jirasync.html">JiraSync</a><a href="privacy.html">Privacy</a><a class="cta" href="terms.html">Terms</a></nav></div></header>
 <main class="wrap doc">
 <h1>Privacy Policy</h1>
-<p><strong>JiraSync for Sheets</strong>, a Google Workspace add-on by Runneth Labs</p>
-<p class="disclaimer">This page is a general template provided for information. It is not legal advice. Last updated: October 28, 2026.</p>
+<p><strong>JiraSync for Sheets</strong> (the "Add-on"), a Google Sheets add-on by Runneth Labs, Arizona, USA. Contact: <a href="mailto:likeaustinpowers@gmail.com">likeaustinpowers@gmail.com</a></p>
+<p class="disclaimer">Last updated: October 29, 2026. This policy describes what the Add-on actually does in version 1. It is provided for information and is not legal advice.</p>
+
 <h2>Summary</h2>
 <ul>
-<li>We do not sell your data.</li>
-<li>We do not store your Jira data or your spreadsheet data on our servers.</li>
-<li>Your Jira API token is stored only in your own Google account's user properties.</li>
-<li>Jira data is written only to the Google Sheet you choose.</li>
+<li>Runneth Labs runs <strong>no servers</strong> for the Add-on. Your Jira data, spreadsheet data and Jira API token are never sent to us.</li>
+<li>The Add-on works only on <strong>the spreadsheet it is opened in</strong>. It cannot open your other files, your Drive, or your Gmail.</li>
+<li>Your Jira API token is stored only in your Google account's private storage for this Add-on (Apps Script User Properties), not in the spreadsheet.</li>
+<li>We do not sell, rent or share your data, use it for advertising, or use it to train AI or machine-learning models.</li>
 </ul>
-<h2>Information the add-on uses</h2>
+
+<h2>Google permissions (OAuth scopes) and why</h2>
+<p>When you install the Add-on, Google asks you to allow exactly these permissions:</p>
 <ul>
-<li><strong>Jira connection details.</strong> Your Jira site URL, account email and Jira API token. These are saved with Google Apps Script <em>User Properties</em>, which are private to your Google account and this add-on. Other users of the same spreadsheet cannot read them.</li>
-<li><strong>Jira data.</strong> When you run a sync, the add-on sends your JQL query to your Jira site over HTTPS and writes the returned issues and fields into the spreadsheet you have open. It does not copy this data anywhere else.</li>
-<li><strong>Spreadsheet access.</strong> The add-on reads and writes only the spreadsheet it is opened in, to create and update the sheets you sync into.</li>
-<li><strong>License key.</strong> If you buy a paid plan, the add-on sends your license key to Gumroad's license verification API to confirm it is valid. The key and its validation result may be cached in your user properties. Gumroad handles payments under its own privacy policy; we never see your card details.</li>
-<li><strong>Your email address.</strong> If the add-on requests it, your Google account email may be used to show which account is signed in and to send you sync-failure notices through your own Google account. It is not shared with third parties.</li>
+<li><strong>See, edit, create and delete only the specific Google Sheets spreadsheet this application is installed in</strong> (<code>spreadsheets.currentonly</code>). Used to create and update the tabs you import into: the import tab, optional "- Changelog" and "- Worklog" tabs, and a "JiraSync log" tab for errors.</li>
+<li><strong>Display and run third-party web content in prompts and sidebars inside Google applications</strong> (<code>script.container.ui</code>). Used to show the JiraSync menu and sidebar.</li>
+<li><strong>Connect to an external service</strong> (<code>script.external_request</code>). Used to call your own Jira Cloud site (<code>*.atlassian.net</code>) and Gumroad's license-check API. Nothing else can be called.</li>
+<li><strong>Allow this application to run when you are not present</strong> (<code>script.scriptapp</code>). Used only if you turn on scheduled refresh (Pro), which creates one timed trigger for that spreadsheet.</li>
+<li><strong>Send email as you</strong> (<code>script.send_mail</code>). Used only to send <em>you</em> a notice when a scheduled refresh fails, at most one email per import per day. The Add-on never reads your email.</li>
+<li><strong>See your primary Google Account email address</strong> (<code>userinfo.email</code>). Used as the address for those failure notices and to keep each user's schedule setting separate in a shared sheet.</li>
 </ul>
-<h2>How information is shared</h2>
-<p>Data is sent only to the services needed to do the job: your Jira site (Atlassian), Google (to read and write your spreadsheet), and Gumroad (license checks only). We do not sell, rent or trade your information, and we do not use it for advertising.</p>
-<h2>Google user data</h2>
-<p>JiraSync for Sheets' use and transfer of information received from Google APIs follows the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements. Google user data is not used to train AI or machine-learning models.</p>
+
+<h2>Information the Add-on uses and where it is stored</h2>
+<ul>
+<li><strong>Jira connection details</strong>: your Jira site address, Atlassian account email and Jira API token. These are stored in Apps Script <em>User Properties</em>, which are private to your Google account and this Add-on. Other editors of the spreadsheet cannot read them.</li>
+<li><strong>Jira data</strong>: when you import or refresh, the Add-on sends your JQL query to your Jira site over HTTPS. It writes the returned issues, the fields you picked, and (if you turn them on) issue change history and worklogs into tabs of the open spreadsheet. A note on cell A1 of each import tab records the site, query, field IDs, row count and time.</li>
+<li><strong>Import settings</strong>: the tab name, JQL, chosen field IDs, the changelog/worklog switches, each user's auto-refresh interval (keyed by their Google email) and the date of the last failure email. These are stored in the spreadsheet's <em>Document Properties</em>, which any user of the Add-on in that spreadsheet can access. No tokens or license keys are stored there.</li>
+<li><strong>Error log</strong>: when a refresh fails, the time, import name and error message are added to the "JiraSync log" tab in your spreadsheet.</li>
+<li><strong>License key</strong>: if you buy Pro, the Add-on sends your license key to Gumroad's license-verification API (<code>api.gumroad.com</code>) when you activate it and about once a week after that. The key and its result (active or not, and when it was last checked) are stored in your User Properties.</li>
+<li><strong>Your Google email address</strong>: read on your device by the Add-on as described above. It is not sent to Jira, Gumroad or Runneth Labs.</li>
+</ul>
+
+<h2>Information Runneth Labs receives</h2>
+<ul>
+<li><strong>Purchases</strong>: Gumroad processes payments. As the seller, Runneth Labs receives the purchase details Gumroad provides, such as your name, email address, product, plan and license key, and we use them only to provide and support your license. We never see your full card details. Gumroad's own privacy policy applies to the checkout.</li>
+<li><strong>Error diagnostics</strong>: the Add-on uses Google's standard Apps Script error logging. When the Add-on hits an unexpected error, Google may record the error message and the name of the function that failed in our Google Cloud project's logs. Logs never include your API token. They may include text from a Jira error message. We use them only to fix bugs, and Google Cloud Logging deletes them automatically, by default after 30 days.</li>
+<li><strong>Support</strong>: if you email us or open a GitHub issue, we receive whatever you choose to send.</li>
+</ul>
+
+<h2>Google user data and Limited Use</h2>
+<p>JiraSync for Sheets' use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements. In particular:</p>
+<ul>
+<li>We use Google user data (the contents of the open spreadsheet and your email address) only to provide and improve the user-facing features described above.</li>
+<li>We do not transfer Google user data to anyone, except as needed to provide those features, to comply with applicable law, or as part of a merger, acquisition or sale of assets with notice to you.</li>
+<li>We do not use or transfer Google user data for serving ads, including retargeting, personalized or interest-based ads.</li>
+<li>We do not allow humans to read Google user data unless you give us permission (for example, in a support request), it is needed for security purposes such as investigating abuse, it is needed to comply with law, or the data is aggregated and anonymized for internal operations.</li>
+<li>We do not use Google user data to develop, improve or train generalized AI or machine-learning models.</li>
+<li>We do not sell Google user data.</li>
+</ul>
+
 <h2>Retention and deletion</h2>
-<p>Because data lives in your Google account and your spreadsheet, you control it. To delete your stored Jira token and settings, use the add-on's disconnect option or remove the add-on from your Google account. Data written into your sheet stays there until you delete it. You can also revoke your Jira API token at any time in your Atlassian account settings.</p>
+<ul>
+<li><strong>Disconnect</strong> in the sidebar deletes your Jira token, license key and settings from your User Properties and removes your scheduled-refresh trigger for that spreadsheet.</li>
+<li>Removing the Add-on (Extensions &gt; Add-ons &gt; Manage add-ons) stops it from running. You can also remove its access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
+<li>Data written into your spreadsheet, including imported tabs, notes, the log tab and Document Properties, stays with that spreadsheet until you delete it or the spreadsheet.</li>
+<li>You can revoke the Jira API token at any time at <a href="https://id.atlassian.com/manage-profile/security/api-tokens" target="_blank" rel="noopener">id.atlassian.com</a>.</li>
+<li>To ask us to delete purchase or support records, email <a href="mailto:likeaustinpowers@gmail.com">likeaustinpowers@gmail.com</a>.</li>
+</ul>
+
 <h2>Security</h2>
-<p>All requests to Jira, Google and Gumroad use HTTPS. We recommend creating a dedicated Jira API token for the add-on so you can revoke it independently.</p>
+<p>All requests to Jira, Google and Gumroad use HTTPS. The Add-on can only call addresses that start with <code>https://*.atlassian.net/rest/</code> or <code>https://api.gumroad.com/v2/licenses/</code>. We recommend creating a separate Jira API token for the Add-on, so you can revoke it on its own. Anyone you share the spreadsheet with can see the Jira data imported into it.</p>
+
 <h2>Children</h2>
-<p>The add-on is not directed to children under 13 and we do not knowingly collect their information.</p>
+<p>The Add-on is not directed to children under 13, and we do not knowingly collect their information.</p>
+
 <h2>Changes</h2>
-<p>We may update this policy. Changes will be posted on this page with a new "last updated" date.</p>
+<p>If the Add-on's data use changes, we will update this page and its date before releasing the change. If the change needs new Google permissions, Google will ask you to approve them again.</p>
+
 <h2>Contact</h2>
-<p>Questions about this policy? Contact Runneth Labs through <!-- TODO(Nick): replace with a business email once a domain is set up. --><a href="https://apify.com/genesis.labs.co" target="_blank" rel="noopener">our Apify profile</a>.</p>
-</main><footer><div class="wrap"><span>© 2026 Runneth Labs</span><span><a href="index.html">Home</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></span></div></footer></body></html>
+<p>Runneth Labs: <a href="mailto:likeaustinpowers@gmail.com">likeaustinpowers@gmail.com</a>. You can also use <a href="https://github.com/Epicguppy/runneth-labs-site/issues" target="_blank" rel="noopener">GitHub issues</a>, but don't post tokens or private data there.</p>
+</main><footer><div class="wrap"><span>© 2026 Runneth Labs · <a href="mailto:likeaustinpowers@gmail.com" style="margin:0">likeaustinpowers@gmail.com</a></span><span><a href="index.html">Home</a><a href="jirasync.html">JiraSync for Sheets</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></span></div></footer></body></html>
