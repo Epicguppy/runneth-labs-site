@@ -24,9 +24,9 @@ AAAA  @    2606:50c0:8003::153
 CNAME www  <github-username>.github.io
 
 ## TODOs
-- Contact email is likeaustinpowers@gmail.com (the Google account that owns the JiraSync add-on). Swap it for a domain address later if wanted.
+- Contact email is likeaustinpowers@gmail.com (the Google account that owns the Runneth Sync for Jira add-on). Swap it for a domain address later if wanted.
 - Once the domain is live, make og:image absolute and add <link rel="canonical">.
 
 ## Pages
-- jirasync.html: JiraSync for Sheets product and support page (also its Marketplace support URL).
+- runneth-sync.html: Runneth Sync for Jira product and support page (also its Marketplace support URL).
 - privacy.html / terms.html: these must match the add-on's real data handling and OAuth scopes (see sheets-addon-jirasync/SCOPES.md). Update both together.
